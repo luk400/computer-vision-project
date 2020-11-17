@@ -101,7 +101,7 @@ detections = cell2table(cell(0,2), "VariableNames", ["bboxes","scores"]);
 gts = cell2table(cell(0,1), "VariableNames", ["person"]);
 for i=1:size(test_img, 1)
     img = imread(test_img{i,1}{1});
-    [bboxes,scores] = detect(acfDetector,img);
+    [bboxes,scores] = detect(acfDetector,img, 'MinSize', [30,30], 'MaxSize', [70,70]);
     bboxes = bboxes(scores > score_threshold, :);
     scores = scores(scores > score_threshold);
 
