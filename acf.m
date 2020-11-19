@@ -28,7 +28,8 @@ size(training_img, 1)
 
 
 %% Train the ACF detector
-acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',10, 'NumStages', 4);
+acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',10, 'NumStages', 4,...
+    'ObjectTrainingSize', 'Auto', 'MaxWeakLearners', 2048);
 
 
 
@@ -89,12 +90,6 @@ size(test_img, 1)
 
 
 
-%% Plot examples of test-images  and the acf's prediction
-plot_pred(test_img, acfDetector)
-
-
-
-
 %% Evaluate performance on all test images
 score_threshold = 40
 detections = cell2table(cell(0,2), "VariableNames", ["bboxes","scores"]);
@@ -109,6 +104,7 @@ for i=1:size(test_img, 1)
     gts = [gts; {test_img{i,2}}];
 end
 head(detections)
+size(detections)
 
 % evaluate
 addpath 'util'
@@ -116,4 +112,11 @@ iou_threshold = .10;
 conf_threshold = .09;
 averagePrecision = evaluateDetectionPrecision(detections,gts,iou_threshold)
 [FP, TP, GT] = computeFpTpFn( detections, gts, iou_threshold, conf_threshold )
+
+
+
+
+
+%% Plot examples of test-images  and the acf's prediction
+plot_pred(test_img, acfDetector)
 
