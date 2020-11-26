@@ -74,5 +74,28 @@ montage(collage)
 
 
 
+% create folder to save augmented images
+save_folder = fullfile(img_folder, "augmented_images"); 
+if ~isdir(save_folder)
+    mkdir(save_folder);
+end
+
+% save an augmented image and its bb
+i = 1
+img = data{i,1};
+imwrite(img, fullfile(save_folder, sprintf('img_%d.png', i)));
+writematrix(data{i,2}, fullfile(save_folder, sprintf('img_%d.csv', i)));
+
+
+% read an augmented image and its bb
+img = imread(fullfile(save_folder, sprintf('img_%d.png', i)));
+bb = csvread(fullfile(save_folder, sprintf('img_%d.csv', i)));
+bb = bb(any(bb ~= 0,2),:);
+
+annotation = 'bb';
+for i=1:size(bb, 1)
+    img = insertObjectAnnotation(img,'rectangle',bb(i,:),annotation);
+end
+imshow(img)
 
 
