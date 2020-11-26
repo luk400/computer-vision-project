@@ -2,11 +2,13 @@ img_folder = './results/';
 trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11' }; 
 testsites = { 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8'};
 
+num_imgs = containers.Map() 
 %% Create dataset with training images
 training_img = cell2table(cell(0,2), "VariableNames", ["path","AABB"]);
 for i = 1:length(trainingsites)
     site = trainingsites{i};
     site_imgs = dir(fullfile(img_folder, site, '/*.png'));
+    num_imgs(trainingsites{i}) = length(site_imgs);
     for j = 1:length(site_imgs)
         name = replace(site_imgs(j).name, '.png', '');
 
@@ -14,15 +16,26 @@ for i = 1:length(trainingsites)
         img_path = fullfile(img_folder, site, sprintf('%s.png', name));
 
         % bounding box
-        bb = csvread(fullfile(img_folder, site, sprintf('%s.csv', name)));
-        bb = bb(any(bb ~= 0,2),:) % remove rows with only zeros
+        try
+            bb = csvread(fullfile(img_folder, site, sprintf('%s.csv', name)));
+        catch ME
+            fprintf(ME.message);
+            fprintf(" File: %s\n", ...
+                fullfile(img_folder, site, sprintf('%s.csv', name))); 
+        end
 
+        % remove rows with only zeros
+        bb = bb(any(bb ~= 0,2),:);
         % add to table
         training_img = [training_img; {img_path, bb}];
     end
 end
+
+keys(num_imgs)
+values(num_imgs)
+sum(cell2mat(values(num_imgs))) % total number of images that SHOULD be present
+size(training_img, 1) % number of images that ARE actually present
 head(training_img)
-size(training_img, 1)
 
 
 
