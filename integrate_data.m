@@ -37,8 +37,8 @@ for i_site = 1:length(allsites)
         images = json.images; clear json;
     
         try
-            json = readJSON( fullfile( datapath, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
-            labels = json.Labels; clear json;
+           json = readJSON( fullfile( datapath, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
+           labels = json.Labels; clear json;
         catch
            warning( 'no Labels defined!!!' ); 
            labels = []; % empty
@@ -122,7 +122,6 @@ for i_site = 1:length(allsites)
             
            poly = labels(i_label).poly;
            assert( strcmpi( images(refId).imagefile, labels(i_label).imagefile ), 'something went wrong: imagefile names of label and poses do not match!' );
-           drawpolygon( 'Position', poly );
         end
         
         % STORE
@@ -152,7 +151,6 @@ for i_site = 1:length(allsites)
                 x1 = BBs(i_proj,1); x2 = BBs(i_proj,2); 
                 y1 = BBs(i_proj,3); y2 = BBs(i_proj,4);
                 aabb = [[x2 y1];[x1 y1];[x1 y2];[x2 y2]];
-                h = drawpolygon('Position',aabb);
             end
         else
             % an empty label
