@@ -1,5 +1,5 @@
 img_folder = './results/';
-trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11' }; 
+trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11', 'augmented_images'}; 
 testsites = { 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8'};
 
 num_imgs = containers.Map() 
@@ -37,18 +37,15 @@ sum(cell2mat(values(num_imgs))) % total number of images that SHOULD be present
 size(training_img, 1) % number of images that ARE actually present
 head(training_img)
 
-
-
-
 %% Train the ACF detector
-acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',10, 'NumStages', 4,...
+acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',2, 'NumStages', 1,...
     'ObjectTrainingSize', 'Auto', 'MaxWeakLearners', 2048);
 
 
 
 
 %% Plot an example image of the training set and the acf's prediction
-nr = 50
+nr = 710
 img = imread(training_img{nr,1}{1});
 annotation = 'bb';
 for i=1:size(training_img{nr,2}{1}, 1)
@@ -70,6 +67,7 @@ end
 figure
 imshow(img)
 
+plot_pred(training_img, acfDetector)
 
 
 
