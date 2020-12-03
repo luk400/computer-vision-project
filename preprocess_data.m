@@ -1,6 +1,3 @@
-% --------------- Example How to Load and Work with our thermal data ------
-% this script computes integrals for every line and writes it into results.
-% Additionally labels as AABBs are stored in text files. 
 addpath 'util'
 clear all; clc; close all; % clean up!
 
