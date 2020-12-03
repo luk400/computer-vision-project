@@ -15,7 +15,7 @@ obj_list: ['person']
 You should then be able to train the model using, e.g.:
 python train.py -c 1 -p cv_project --batch_size 8 --lr 1e-5
 
-and evaluate it on test data using ('-cuda False' for training on CPU):
+and evaluate it on test data using:
 python coco_eval.py -p cv_project -c 1 -w ./logs/cv_project/<your-saved-weights>.pth --cuda False
 
 NOTE: currently the validation set used when training is the provided test set, this should of course not be used as a validation set and is just temporary, because I needed to specify a validation set to try out if the train.py works. 
