@@ -3,11 +3,13 @@ This should create the folder Yet-Another-EfficientDet-Pytorch/datasets/ with al
 
 To start training, after installing the necessary dependencies, you will also need to create the yml file needed for training inside the projects folder (Yet-Another-EfficientDet-Pytorch/projects/cv_project.yml) and edit it appropriately, in particular, for train.py to run, you will need to include: 
 
+```
 project_name: cv_project
 train_set: train
 val_set: val
 obj_list: ['person']
 ...
+```
 
 
 You should then be able to train the model using, e.g.:
