@@ -13,10 +13,14 @@ obj_list: ['person']
 
 
 You should then be able to train the model using, e.g.:
+```
 python train.py -c 1 -p cv_project --batch_size 8 --lr 1e-5
+```
 
 and evaluate it on test data using:
+```
 python coco_eval.py -p cv_project -c 1 -w ./logs/cv_project/<your-saved-weights>.pth --cuda False
+```
 
 NOTE: currently the validation set used when training is the provided test set, this should of course not be used as a validation set and is just temporary, because I needed to specify a validation set to try out if the train.py works. 
 Also, currently when running coco_eval.py, I get the error 'model does not provide any valid output', which (after looking at the code) means that the model doesn't predict any bounding boxes. I'm not yet sure if this is just because I didn't even train for a single epoch yet and because the model parameters are completely arbitrary, or because there's a problem with the dataset specification. This will be the next step to figure out.
