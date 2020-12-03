@@ -1,5 +1,5 @@
 img_folder = './results/';
-trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11', 'augmented_images'}; 
+trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11'}; 
 testsites = { 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8'};
 
 num_imgs = containers.Map() 
@@ -30,45 +30,21 @@ for i = 1:length(trainingsites)
         training_img = [training_img; {img_path, bb}];
     end
 end
-
 keys(num_imgs)
 values(num_imgs)
 sum(cell2mat(values(num_imgs))) % total number of images that SHOULD be present
 size(training_img, 1) % number of images that ARE actually present
 head(training_img)
 
+
 %% Train the ACF detector
-acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',2, 'NumStages', 1,...
+training_img = training_img(1:59,:) % unaugmented images with people present
+acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',10, 'NumStages', 4,...
     'ObjectTrainingSize', 'Auto', 'MaxWeakLearners', 2048);
 
 
-
-
-%% Plot an example image of the training set and the acf's prediction
-nr = 710
-img = imread(training_img{nr,1}{1});
-annotation = 'bb';
-for i=1:size(training_img{nr,2}{1}, 1)
-    img = insertObjectAnnotation(img,'rectangle',training_img{nr,2}{1}(i,:),annotation);
-end
-imshow(img)
-
-%Test the ACF detector on the same image.
-img = imread(training_img{nr,1}{1});
-[bboxes,scores] = detect(acfDetector,img, 'MinSize', [30,30], 'MaxSize', [70,70]);
-%Display the detection results and insert the bounding boxes for objects into the image.
-score_threshold = 40
-for i = 1:length(scores)
-   if scores(i)>score_threshold
-       annotation = sprintf('Confidence = %.1f',scores(i));
-       img = insertObjectAnnotation(img,'rectangle',bboxes(i,:),annotation);
-   end
-end
-figure
-imshow(img)
-
+%% show training images and predictions of acf
 plot_pred(training_img, acfDetector)
-
 
 
 %% Evaluation
@@ -99,6 +75,8 @@ head(test_img)
 size(test_img, 1)
 
 
+%% Show test images and the acf's prediction
+plot_pred(test_img, acfDetector)
 
 
 %% Evaluate performance on all test images
@@ -123,11 +101,4 @@ iou_threshold = .10;
 conf_threshold = .09;
 averagePrecision = evaluateDetectionPrecision(detections,gts,iou_threshold)
 [FP, TP, GT] = computeFpTpFn( detections, gts, iou_threshold, conf_threshold )
-
-
-
-
-
-%% Plot examples of test-images  and the acf's prediction
-plot_pred(test_img, acfDetector)
 

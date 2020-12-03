@@ -1,4 +1,4 @@
-function out = augmentationFunction(data, varargin)
+function out = augmentation_function(data, varargin)
     % Unpack original data.
     I = data{1};
     boxes = round(data{2});
