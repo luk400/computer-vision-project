@@ -1,0 +1,3 @@
+[submodule "Yet-Another-EfficientDet-Pytorch"]
+	path = Yet-Another-EfficientDet-Pytorch
+	url = https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch
