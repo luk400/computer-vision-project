@@ -1,4 +1,10 @@
-Simply put the data-folder for the CV-project, as well as the folder Yet-Another-EfficientDet-Pytorch/ (from https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch) into this folder, then execute the preprocess_data.m script with matlab. 
+Don't forget the recursive :) This is to clone submodules, in our case the EfficientDet implementation we are going to use, taken from [here](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch).
+
+```
+git clone --recursive  https://github.com/luk400/computer-vision-project.git
+```
+
+Simply put the data-folder for the CV-project, then execute the preprocess_data.m script with matlab. 
 This should create the folder Yet-Another-EfficientDet-Pytorch/datasets/ with all the appropriate subfolders, images and json-files needed for training. 
 
 To start training, after installing the necessary dependencies, you will also need to create the yml file needed for training inside the projects folder (Yet-Another-EfficientDet-Pytorch/projects/cv_project.yml) and edit it appropriately, in particular, for train.py to run, you will need to include: 
