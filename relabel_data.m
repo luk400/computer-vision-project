@@ -5,7 +5,7 @@ clear all; clc; close all; % clean up!
 
 
 %% SETUP
-linenumber = 4;
+linenumber = 5;
 site = 'F6';
 datapath = fullfile( './data/', site ); 
 
@@ -86,9 +86,21 @@ integral = integral ./ count;
 
 
 %% load and display labels
-
-json = readJSON( fullfile( datapath, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
+json_path = fullfile(datapath, '/Labels/', ['Label' num2str(linenumber) '.json']);
+json = readJSON(json_path);
 labels = json.Labels; clear json;
+
+% % draw unaligned bb labels
+%h_fig = figure(10);
+%set( h_fig, 'Color', 'white' ); clf;
+%imshow( integral, [] ); title( 'integral with labels' );
+% % draw polygonal labels
+%for i_label = 1:length(labels)
+%    poly = labels(i_label).poly;
+%    assert( strcmpi( images(imgIds(3)).imagefile, labels(i_label).imagefile ), 'something went wrong: imagefile names of label and poses do not match!' );
+%    drawpolygon( 'Position', poly );
+%end
+
 
 %% axis-aligned bounding box labels
 h_fig = figure(11);
@@ -98,16 +110,26 @@ imshow( integral, [] ); title( 'integral with AABB labels' );
 % draw AABBs 
 if ~isempty(labels) && ~isempty({labels.poly})
     [absBBs, relBBs, ~] = saveLabels( {labels.poly}, size(integral), [] );
+    absBBs
+    sprintf('-------------------------')
+    labels.poly
 
-
+    %num_img = size(absBBs,1);
+    %x1 = absBBs(num_img,1); x2 = absBBs(num_img,2); 
+    %y1 = absBBs(num_img,3); y2 = absBBs(num_img,4);
+    %disp('---------');
+    %aabb = [[x2 y1];[x1 y1];[x1 y2];[x2 y2]]
+    %disp('---------');
+    
     for i_proj = 1:size(absBBs,1)
-        x1 = absBBs(i_proj,1); x2 = absBBs(i_proj,2); 
-        y1 = absBBs(i_proj,3); y2 = absBBs(i_proj,4);
-        aabb = [[x2 y1];[x1 y1];[x1 y2];[x2 y2]];
-        roi = drawpolygon('Position',aabb, 'Color', 'yellow');
+        x_min = absBBs(i_proj,1); 
+        x_max = absBBs(i_proj,2); 
+        y_min = absBBs(i_proj,3); 
+        y_max = absBBs(i_proj,4);
+        pos_rect = [x_min, y_min, x_max-x_min, y_max-y_min];
+        roi = drawrectangle('Position',pos_rect, 'Color', 'yellow', 'Label', sprintf('bb%d', i_proj));
 
-        addlistener(roi,'MovingROI',@get_bb_pos);
-        addlistener(roi,'ROIMoved',@get_bb_pos);
+        addlistener(roi,'ROIMoved',@(src,event)get_bb_pos(src,event,i_proj,json_path));
     end
 end
 
