@@ -1,4 +1,5 @@
 function relabeling_func(imgs)
+    addpath 'util'
     %% axis-aligned bounding box labels
     f = figure;
     panel = uipanel(f, 'Position',[0.01 0.02 0.98 0.2]);
@@ -16,12 +17,17 @@ function relabeling_func(imgs)
     l1 = uicontrol(sub_panel1, 'style', 'text',... 
         'Units', 'Normalized',...
         'Position', [0 0 1 0.5]);
-    % button for saving modified BB
+        % button for adding BB
     button=uicontrol(panel,'Style','pushbutton',...
         'String','Save modified BB','Units','normalized',...
         'Position',[0.1 0.4 0.2 0.2],'Visible','on',...
         'Callback', @save_BB);
-    
+    % button for saving modified BB
+    button=uicontrol(panel,'Style','pushbutton',...
+        'String','Add BB','Units','normalized',...
+        'Position',[0.1 0.7 0.2 0.2],'Visible','on',...
+        'Callback', @add_BB);
+
     
     % call function for plotting at initialization of the gui
     plot_images()
@@ -63,6 +69,15 @@ function relabeling_func(imgs)
         end
     end
 
+    function add_BB(src,event)
+        global roi_objects
+        bb_nr = size(roi_objects,1)+1
+        pos_rect = [231, 320, 50, 50];
+        roi_objects = [roi_objects; ...
+                    drawrectangle('Position',pos_rect, ...
+                    'Color', 'red', 'Label', sprintf('bb%d', bb_nr))];
+    end
+
     function save_BB(src,event)
         sprintf('save modified bounding boxes...')
 
@@ -71,8 +86,6 @@ function relabeling_func(imgs)
 
         json = readJSON(json_path);
         labels = json.Labels;
-
-        %[labels.poly] % original labels
 
         num_label = 1;
         for num_roi=1:size(roi_objects,1)
@@ -92,25 +105,10 @@ function relabeling_func(imgs)
                 labels(num_label).poly = [[x_max y_min];[x_min y_min];[x_min y_max];[x_max y_max]];
 
                 num_label = num_label + 1;
-                
-                %% overwrite original label in json with modified label
-                %json = readJSON(json_path);
-                %labels = json.Labels;
-                %labels(num_bb).poly = modified_label;
-                %json.Labels = labels;
-
-                %% save json with the modified bb
-                %json_str = jsonencode(json);
-                %fid = fopen(json_path, 'w+');
-                %fwrite(fid, json_str, 'char');
-                %fclose(fid);
             else
                 labels(num_label) = [];
             end
         end
-
-        %[labels.poly] % new labels
-
         % overwrite original labels in json with modified labels
         json.Labels = labels;
 
