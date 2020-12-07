@@ -41,25 +41,4 @@ Also, currently when running coco_eval.py, I get the error 'model does not provi
 
 ### Files description:
 
-.
-├── acf.m
-├── add_arguments.m
-├── assets
-├── augmentation_function.m
-├── custom_effientdet_train.py
-├── cv_eval.py
-├── data -> ../data
-├── data_augmentation.m
-├── debug_data.py
-├── download_pretrained_weights.sh
-├── drone_dataset.py
-├── helpers.py
-├── initialize_json.m
-├── logs
-├── plot_pred.m
-├── preprocess_data.m
-├── README.md
-├── results
-├── util
-├── visualize_test.py
-└── Yet-Another-EfficientDet-Pytorch
+
