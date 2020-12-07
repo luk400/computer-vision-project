@@ -1,6 +1,6 @@
 TODO:
 
-- [ ] fix data augumentation
+- [ X ] fix data augumentation
 - [ ] remove images with none labels from dataloaders (e.g. instances_train.json)
 
 
