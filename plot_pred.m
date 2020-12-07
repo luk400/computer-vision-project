@@ -99,7 +99,7 @@ plot_images()
         img = imread(test_img{nr,1}{1}); % read image
         annotation = ' ';
         for i=1:size(test_img{nr,2}{1}, 1) % draw bounding boxes
-            img = insertObjectAnnotation(img,'rectangle',test_img{nr,2}{1}(i,:),annotation);
+            img = insertObjectAnnotation(img,'rectangle',test_img{nr,2}{1}(i,:),annotation,'LineWidth',5);
         end
         subplot(1,2,1); imshow(img); title("True BB's"); 
         
@@ -110,7 +110,7 @@ plot_images()
         for i = 1:length(scores) % draw bounding boxes
            if scores(i)>score_threshold % draw only if score is above threshold
                annotation = sprintf('Confidence = %.1f',scores(i));
-               img = insertObjectAnnotation(img,'rectangle',bboxes(i,:),annotation);
+               img = insertObjectAnnotation(img,'rectangle',bboxes(i,:),annotation,'LineWidth',5);
            end
         end
         subplot(1,2,2); imshow(img); title("Predictions");

@@ -38,13 +38,15 @@ head(training_img)
 
 
 %% Train the ACF detector
-training_img = training_img(1:59,:) % unaugmented images with people present
-acfDetector = trainACFObjectDetector(training_img,'NegativeSamplesFactor',10, 'NumStages', 4,...
+some_training_img = training_img(1:59,:) % unaugmented images with people present
+acfDetector = trainACFObjectDetector(some_training_img,'NegativeSamplesFactor',10, 'NumStages', 2,...
     'ObjectTrainingSize', 'Auto', 'MaxWeakLearners', 2048);
 
+training_img{44,:}
 
 %% show training images and predictions of acf
 plot_pred(training_img, acfDetector)
+
 
 
 %% Evaluation

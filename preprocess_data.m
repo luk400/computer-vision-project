@@ -151,7 +151,6 @@ for i_site = 1:length(allsites)
 
             if size(bbs,1) > 0
                 % save bounding box parameters as as required for acf trainer ([x y width height])
-                json = readJSON( fullfile( datapath, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
                 bbs = saveLabels( {labels.poly}, size(integral), [] );
                 x_left = bbs(:,1);
                 x_right = bbs(:,2);
