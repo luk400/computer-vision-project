@@ -2,8 +2,8 @@ TODO:
 
 - [ ] improve image integration
 - [ ] fix data augumentation
-- [ ] remove images with none labels from dataloaders (e.g. instances_train.json)
-
+- [x] remove images with none labels from dataloaders (e.g. instances_train.json)
+- [x] relabeling feature
 
 
 Don't forget the recursive :) This is to clone submodules, in our case the EfficientDet implementation we are going to use, taken from [here](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch).
