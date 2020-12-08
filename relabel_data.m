@@ -3,6 +3,21 @@ addpath 'util'
 img_folder = './results/';
 trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11'}; 
 testsites = { 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8'};
+allsites = cat(2, trainingsites, testsites );
+
+modified_base_folder = './modified_labels/'
+if ~exist(modified_base_folder, 'dir')
+    sprintf('Copying labels from ./data to %s', modified_base_folder)
+    for i=1:size(allsites,2)
+        site = allsites{i};
+        new_folder = fullfile(modified_base_folder, site, 'Labels');
+        mkdir(new_folder);
+
+        source_folder = fullfile('./data/', site, 'Labels');
+        sprintf('copying from %s to %s', source_folder, new_folder);
+        copyfile(fullfile(source_folder,'/*'), new_folder);
+    end
+end
 
 num_imgs = containers.Map() 
 %% Create dataset with training images
@@ -31,7 +46,7 @@ for i = 1:length(trainingsites)
         % remove rows with only zeros
         bb = bb(any(bb ~= 0,2),:);
         % add to table
-        json_path = fullfile('./data/', site, '/Labels/', sprintf('Label%d.json', j));
+        json_path = fullfile(modified_base_folder, site, '/Labels/', sprintf('Label%d.json', j));
         training_img = [training_img; {img_path, bb, json_path}];
     end
 end

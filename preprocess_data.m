@@ -25,11 +25,19 @@ training_img_id = 0;
 test_ann_id = 0;
 test_img_id = 0;
 
+modified_base_folder = './modified_labels/'
 for i_site = 1:length(allsites)
     site = allsites{i_site};
     fprintf("\nSite %s\n", site);
 
     datapath = fullfile( './data/', site ); 
+    datapath_labels = datapath
+    
+    % if modified labels were created, use those for preprocessing
+    if exist(modified_base_folder, 'dir')
+        datapath_labels = fullfile('./modified_labels/', site);
+    end
+    
     if ~isfolder(fullfile( datapath ))
        error( 'folder %s does not exist. Did you download additional data?', datapath );
     end
@@ -50,7 +58,7 @@ for i_site = 1:length(allsites)
         images = json.images; clear json;
     
         try
-           json = readJSON( fullfile( datapath, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
+           json = readJSON( fullfile( datapath_labels, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
            labels = json.Labels; clear json;
         catch
            warning( 'no Labels defined!!!' ); 
