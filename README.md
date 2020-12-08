@@ -1,6 +1,7 @@
 TODO:
 
 - [ ] improve image integration
+- [ ] modify bad labels using relabel_data.m
 - [ ] fix data augumentation
 - [x] remove images with none labels from dataloaders (e.g. instances_train.json)
 - [x] relabeling feature
