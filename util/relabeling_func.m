@@ -47,6 +47,7 @@ function relabeling_func(imgs)
         roi_objects = [];
 
         imshow(img);
+        title(imgs{img_nr,1}, 'Interpreter', 'none');
         json = readJSON(json_path);
         labels = json.Labels;
         
