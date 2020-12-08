@@ -147,11 +147,11 @@ for i_site = 1:length(allsites)
 
             % make sure bounding boxes don't consist of just zeros
             bbs = saveLabels( {labels.poly}, size(integral), [] );
-            bbs(~any(bbs,2),:)=[];
+            %bbs(~any(bbs,2),:)=[];
+            bbs(all(bbs<=1,2),:)=[]; % if all coordinates of a bb are smaller or equ. to 1, remove it
 
             if size(bbs,1) > 0
                 % save bounding box parameters as as required for acf trainer ([x y width height])
-                bbs = saveLabels( {labels.poly}, size(integral), [] );
                 x_left = bbs(:,1);
                 x_right = bbs(:,2);
                 y_bottom = bbs(:,3);
@@ -162,10 +162,10 @@ for i_site = 1:length(allsites)
 
                 % save bounding box parameters as required for efficientdet 
                 % subtract 1 for compatibility with python indexing
-                x_left = x_left - 1;
-                x_right = x_right - 1;
-                y_bottom = y_bottom - 1;
-                y_top = y_top - 1;
+                x_left = round(x_left - 1);
+                x_right = round(x_right - 1);
+                y_bottom = round(y_bottom - 1);
+                y_top = round(y_top - 1);
                 width = x_right - x_left;
                 height = y_top - y_bottom;
 
