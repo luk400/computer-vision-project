@@ -71,7 +71,7 @@ function relabeling_func(imgs)
 
     function add_BB(src,event)
         global roi_objects
-        bb_nr = size(roi_objects,1)+1
+        bb_nr = size(roi_objects,1)+1;
         pos_rect = [231, 320, 50, 50];
         roi_objects = [roi_objects; ...
                     drawrectangle('Position',pos_rect, ...

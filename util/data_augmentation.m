@@ -50,7 +50,11 @@ function training_struct = data_augmentation(training_struct)
         mkdir(save_folder);
     end
     
-    %% Define different augmentation operations 
+
+    %% -----------------------------------------------------------
+    % This is the relevant part for defining augmentation operations
+    %
+    % Define different augmentation operations 
     % data augmentation is done with the function randomAffine2D() inside
     % of augmentation_function()
     % default arguments for randomAffine2D():
@@ -140,6 +144,9 @@ function training_struct = data_augmentation(training_struct)
     args = add_arguments(new_args, args); % add to args array
     
     %% and many more combinations could be done...
+    %% -----------------------------------------------------------
+
+
     fprintf('After the following loop you will have %d new images',...
         size(args,1)*size(training_img,1))
     
