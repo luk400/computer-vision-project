@@ -1,10 +1,11 @@
 TODO:
 
 - [ ] improve image integration
-- [ ] modify bad labels using relabel_data.m
-- [ ] fix data augumentation
+- [ ] add more functions for data augmentation
+- [X] modify bad labels using relabel_data.m
 - [x] remove images with none labels from dataloaders (e.g. instances_train.json)
 - [x] relabeling feature
+- [ ] ~~fix data augmentation~~
 
 
 Don't forget the recursive :) This is to clone submodules, in our case the EfficientDet implementation we are going to use, taken from [here](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch).
@@ -40,4 +41,28 @@ python coco_eval.py -p cv_project -c 1 -w ./logs/cv_project/<your-saved-weights>
 
 ### Files description:
 
+```
+.
+├── assets
+├── custom_effientdet_train.py
+├── cv_eval.py
+├── data -> ../data
+├── debug_data.py
+├── download_pretrained_weights.sh
+├── drone_dataset.py
+├── helpers.py
+├── logs
+├── modified_labels
+├── preprocess_data.asv
+├── preprocess_data.m
+├── README.md
+├── relabel_data.m - Modifies the label file in the results folder"
+├── results - This folder stores all data and it's used for data agmentation
+├── results_relabelled.zip
+├── util
+├── visualize_dataset.py - Shows the data used for training (you can see the test too)
+├── visualize_test.py
+└── Yet-Another-EfficientDet-Pytorch
+
+```
 
