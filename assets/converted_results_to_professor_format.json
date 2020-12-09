@@ -1,0 +1,1246 @@
+[
+    {
+        "frame_id": 999,
+        "filename": "T1_line4.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.37889933586120605,
+                    "center_y": 0.5380365252494812,
+                    "width": 0.17732477188110352,
+                    "height": 0.21037638187408447
+                },
+                "confidence": 0.7904639840126038
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T1_line5.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3356327056884766,
+                    "center_y": 0.47724249958992004,
+                    "width": 0.03000354766845703,
+                    "height": 0.046887099742889404
+                },
+                "confidence": 0.09436635673046112
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T1_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.005677356012165546,
+                    "center_y": 0.09451737278141081,
+                    "width": 0.004283162578940391,
+                    "height": 0.07083050860092044
+                },
+                "confidence": 0.14994555711746216
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T2_line4.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.6986293792724609,
+                    "center_y": 0.9633339047431946,
+                    "width": 0.28234157562255857,
+                    "height": 0.3861602544784546
+                },
+                "confidence": 0.9148248434066772
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T2_line5.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.34693059921264646,
+                    "center_y": 0.5021748393774033,
+                    "width": 0.1665522575378418,
+                    "height": 0.2109910547733307
+                },
+                "confidence": 0.96901535987854
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5941820025444031,
+                    "center_y": 0.8035280257463455,
+                    "width": 0.7162786722183228,
+                    "height": 0.8849731385707855
+                },
+                "confidence": 0.09119527786970139
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T2_line6.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4123071551322937,
+                    "center_y": 0.5788354501128197,
+                    "width": 0.5953721284866333,
+                    "height": 0.7407876998186111
+                },
+                "confidence": 0.6767259836196899
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line6.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.6924466371536255,
+                    "center_y": 0.9519489109516144,
+                    "width": 0.07077059745788575,
+                    "height": 0.10272616147994995
+                },
+                "confidence": 0.9762544631958008
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.7687299728393555,
+                    "center_y": 1.0274966359138489,
+                    "width": 0.3533159255981445,
+                    "height": 0.43389761447906494
+                },
+                "confidence": 0.050651319324970245
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.45835968255996706,
+                    "center_y": 0.65080127120018,
+                    "width": 0.12700250148773193,
+                    "height": 0.16020554304122925
+                },
+                "confidence": 0.9926673769950867
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line8.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.6264687538146972,
+                    "center_y": 0.8536074161529541,
+                    "width": 0.12393779754638672,
+                    "height": 0.1680922508239746
+                },
+                "confidence": 0.9783523082733154
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5216411828994751,
+                    "center_y": 0.7244461476802826,
+                    "width": 0.15147862434387208,
+                    "height": 0.20240753889083862
+                },
+                "confidence": 0.054804351180791855
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line9.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3940567597746849,
+                    "center_y": 0.5532538872212172,
+                    "width": 0.708552148938179,
+                    "height": 0.878963116556406
+                },
+                "confidence": 0.6431159377098083
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line10.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.45026817321777346,
+                    "center_y": 0.6214398741722107,
+                    "width": 0.13026103973388672,
+                    "height": 0.17791080474853516
+                },
+                "confidence": 0.10650066286325455
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line11.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.475077486038208,
+                    "center_y": 0.6536150574684143,
+                    "width": 0.018097686767578124,
+                    "height": 0.01519012451171875
+                },
+                "confidence": 0.28730806708335876
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line12.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4074766516685486,
+                    "center_y": 0.567835658788681,
+                    "width": 0.07094738483428956,
+                    "height": 0.06941288709640503
+                },
+                "confidence": 0.0759243592619896
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line16.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3206734299659729,
+                    "center_y": 0.46896711736917496,
+                    "width": 0.4391098737716675,
+                    "height": 0.5601959675550461
+                },
+                "confidence": 0.4047697186470032
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.566218101978302,
+                    "center_y": 0.8065947145223618,
+                    "width": 0.5596849203109742,
+                    "height": 0.7130265533924103
+                },
+                "confidence": 0.08185742050409317
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line17.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5364018440246582,
+                    "center_y": 0.7533068060874939,
+                    "width": 0.1169168472290039,
+                    "height": 0.12661468982696533
+                },
+                "confidence": 0.8509851098060608
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.15629339814186097,
+                    "center_y": 0.2627267464995384,
+                    "width": 0.05817807912826538,
+                    "height": 0.04588182270526886
+                },
+                "confidence": 0.5403723120689392
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T3_line18.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.6191643476486206,
+                    "center_y": 0.8492196202278137,
+                    "width": 0.3450483798980713,
+                    "height": 0.400387167930603
+                },
+                "confidence": 0.9705735445022583
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3767532825469971,
+                    "center_y": 0.5262634977698326,
+                    "width": 0.7535065650939942,
+                    "height": 0.9387919455766678
+                },
+                "confidence": 0.05859552323818207
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5179626286029816,
+                    "center_y": 0.7158508598804474,
+                    "width": 0.8611790060997009,
+                    "height": 1.0634154677391052
+                },
+                "confidence": 0.5387064218521118
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.32687309458851815,
+                    "center_y": 0.4849307583644986,
+                    "width": 0.6153198584914208,
+                    "height": 0.7668245937675238
+                },
+                "confidence": 0.06813336163759232
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line8.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.8586829662322998,
+                    "center_y": 1.1277005672454834,
+                    "width": 0.1891343116760254,
+                    "height": 0.2397160530090332
+                },
+                "confidence": 0.0912449061870575
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line9.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.60076744556427,
+                    "center_y": 0.8503958582878113,
+                    "width": 0.1924670696258545,
+                    "height": 0.2879270315170288
+                },
+                "confidence": 0.25144079327583313
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5738119602203369,
+                    "center_y": 0.8286652266979218,
+                    "width": 0.2756635665893555,
+                    "height": 0.33704203367233276
+                },
+                "confidence": 0.09419657289981842
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line10.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4628212869167328,
+                    "center_y": 0.6938264966011047,
+                    "width": 0.5762551426887512,
+                    "height": 0.7560030221939087
+                },
+                "confidence": 0.2486291080713272
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3610072135925293,
+                    "center_y": 0.5289991348981857,
+                    "width": 0.16905059814453124,
+                    "height": 0.22796598076820374
+                },
+                "confidence": 0.18057484924793243
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.39882928133010864,
+                    "center_y": 0.602910727262497,
+                    "width": 0.37707221508026123,
+                    "height": 0.5073921084403992
+                },
+                "confidence": 0.09146244823932648
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3300029432401061,
+                    "center_y": 0.4774980104994029,
+                    "width": 0.6569937396794557,
+                    "height": 0.8184501812793314
+                },
+                "confidence": 0.09023350477218628
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4569501280784607,
+                    "center_y": 0.6402124017477036,
+                    "width": 0.2604256868362427,
+                    "height": 0.34949663281440735
+                },
+                "confidence": 0.06036292761564255
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3417335271835327,
+                    "center_y": 0.4979396313428879,
+                    "width": 0.05310425758361816,
+                    "height": 0.08231988549232483
+                },
+                "confidence": 0.05052375793457031
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line11.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4320905804634094,
+                    "center_y": 0.6065895706415176,
+                    "width": 0.6481723546981811,
+                    "height": 0.8197445571422577
+                },
+                "confidence": 0.382510244846344
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line12.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3621629595756531,
+                    "center_y": 0.521550640463829,
+                    "width": 0.3028802156448364,
+                    "height": 0.3989105522632599
+                },
+                "confidence": 0.6589900255203247
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.17156368494033813,
+                    "center_y": 0.2743261605501175,
+                    "width": 0.09122798442840577,
+                    "height": 0.12823733687400818
+                },
+                "confidence": 0.18374332785606384
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line13.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4467578649520874,
+                    "center_y": 0.6137135028839111,
+                    "width": 0.010452508926391602,
+                    "height": 0.020199179649353027
+                },
+                "confidence": 0.08462424576282501
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line14.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.38240901231765745,
+                    "center_y": 0.5420136004686356,
+                    "width": 0.12396810054779053,
+                    "height": 0.1527293622493744
+                },
+                "confidence": 0.9812501072883606
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.0825297325849533,
+                    "center_y": 0.1653861328959465,
+                    "width": 0.04492970108985901,
+                    "height": 0.048905059695243835
+                },
+                "confidence": 0.25880852341651917
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line16.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.1418432742357254,
+                    "center_y": 0.2505592480301857,
+                    "width": 0.09926480650901795,
+                    "height": 0.11301402747631073
+                },
+                "confidence": 0.8883579969406128
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5260867357254029,
+                    "center_y": 0.7204946577548981,
+                    "width": 0.2449803829193115,
+                    "height": 0.2981414198875427
+                },
+                "confidence": 0.4087825119495392
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.28412479162216187,
+                    "center_y": 1.248473659157753,
+                    "width": 0.15893990993499757,
+                    "height": 0.001830071210861206
+                },
+                "confidence": 0.05178346857428551
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line18.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4144585371017456,
+                    "center_y": 0.5857361778616905,
+                    "width": 0.557683801651001,
+                    "height": 0.7151530534029007
+                },
+                "confidence": 0.5247054100036621
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.7346415042877197,
+                    "center_y": 0.9881599247455597,
+                    "width": 0.42740678787231445,
+                    "height": 0.5165972113609314
+                },
+                "confidence": 0.09325059503316879
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5306438684463501,
+                    "center_y": 0.728086069226265,
+                    "width": 0.3786957263946533,
+                    "height": 0.4838190972805023
+                },
+                "confidence": 0.0796288475394249
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T4_line19.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3935192108154297,
+                    "center_y": 0.5529881417751312,
+                    "width": 0.09548120498657227,
+                    "height": 0.11823052167892456
+                },
+                "confidence": 0.2647736966609955
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.27414150116965175,
+                    "center_y": 0.40751231310423464,
+                    "width": 0.5453139329329133,
+                    "height": 0.7315587878692895
+                },
+                "confidence": 0.05525116249918938
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T5_line3.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3361889958381653,
+                    "center_y": 0.48055300116539,
+                    "width": 0.2569968938827515,
+                    "height": 0.33400899171829224
+                },
+                "confidence": 0.4028577208518982
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.15461791157722474,
+                    "center_y": 0.25710678845643997,
+                    "width": 0.07144092321395874,
+                    "height": 0.0648951381444931
+                },
+                "confidence": 0.08890176564455032
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3083429545164108,
+                    "center_y": 0.44641347974538803,
+                    "width": 0.46139665246009826,
+                    "height": 0.5833643227815628
+                },
+                "confidence": 0.08086375892162323
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T5_line4.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.40647866725921633,
+                    "center_y": 0.5772615373134613,
+                    "width": 0.015919923782348633,
+                    "height": 0.014751851558685303
+                },
+                "confidence": 0.983790934085846
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.453221869468689,
+                    "center_y": 0.6257945895195007,
+                    "width": 0.007726144790649414,
+                    "height": 0.005697965621948242
+                },
+                "confidence": 0.6861076354980469
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4549806938506663,
+                    "center_y": 0.6387284697266296,
+                    "width": 0.905992248468101,
+                    "height": 1.1937149164732546
+                },
+                "confidence": 0.08298391103744507
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.7718990564346313,
+                    "center_y": 1.0284705460071564,
+                    "width": 0.3657689571380615,
+                    "height": 0.4350888133049011
+                },
+                "confidence": 0.07458705455064774
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.6890413284301757,
+                    "center_y": 0.92041015625,
+                    "width": 0.2152566909790039,
+                    "height": 0.2508831024169922
+                },
+                "confidence": 0.07005077600479126
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.439024019241333,
+                    "center_y": 0.7665242254734039,
+                    "width": 0.878048038482666,
+                    "height": 0.9657289385795593
+                },
+                "confidence": 0.06114403158426285
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.26407105922698976,
+                    "center_y": 1.091205358505249,
+                    "width": 0.5281421184539795,
+                    "height": 0.31636667251586914
+                },
+                "confidence": 0.050036150962114334
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T5_line5.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.23423643708229064,
+                    "center_y": 0.3505866676568985,
+                    "width": 0.10014408826828003,
+                    "height": 0.1270579993724823
+                },
+                "confidence": 0.12742672860622406
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.13253935277462006,
+                    "center_y": 0.22868575155735016,
+                    "width": 0.07944772839546203,
+                    "height": 0.0881485641002655
+                },
+                "confidence": 0.05801786854863167
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T5_line6.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.5376719951629638,
+                    "center_y": 0.7294878661632538,
+                    "width": 0.21741437911987305,
+                    "height": 0.25662821531295776
+                },
+                "confidence": 0.15044920146465302
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T5_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.2790879964828491,
+                    "center_y": 0.41688159108161926,
+                    "width": 0.18657536506652833,
+                    "height": 0.2551104426383972
+                },
+                "confidence": 0.1819780319929123
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.17797186076641083,
+                    "center_y": 0.2879278212785721,
+                    "width": 0.19185810685157775,
+                    "height": 0.25547727942466736
+                },
+                "confidence": 0.11277665197849274
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T5_line8.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4221440553665161,
+                    "center_y": 0.6444810777902603,
+                    "width": 0.6041290760040283,
+                    "height": 0.6897390782833099
+                },
+                "confidence": 0.1418287307024002
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.20887839198112487,
+                    "center_y": 0.35396405309438705,
+                    "width": 0.27903457880020144,
+                    "height": 0.329053595662117
+                },
+                "confidence": 0.05301760137081146
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T6_line3.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3764949321746826,
+                    "center_y": 0.5380674302577972,
+                    "width": 0.010362052917480468,
+                    "height": 0.0068381428718566895
+                },
+                "confidence": 0.9738070964813232
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T6_line4.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.33751649856567384,
+                    "center_y": 0.49587659537792206,
+                    "width": 0.16219911575317383,
+                    "height": 0.18468299508094788
+                },
+                "confidence": 0.9435259699821472
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.710635757446289,
+                    "center_y": 0.9535146653652191,
+                    "width": 0.4543483734130859,
+                    "height": 0.5490897297859192
+                },
+                "confidence": 0.9100707173347473
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.660660719871521,
+                    "center_y": 0.8943688869476318,
+                    "width": 0.5554432392120361,
+                    "height": 0.6777017116546631
+                },
+                "confidence": 0.36524006724357605
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T6_line5.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.2490164339542389,
+                    "center_y": 0.3735181987285614,
+                    "width": 0.16212843656539916,
+                    "height": 0.18038630485534668
+                },
+                "confidence": 0.5981360673904419
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3519349157810211,
+                    "center_y": 0.4988851994276047,
+                    "width": 0.4909026026725769,
+                    "height": 0.6079471409320831
+                },
+                "confidence": 0.08538951724767685
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T6_line6.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.38053889125585555,
+                    "center_y": 0.6065088715404272,
+                    "width": 0.7020185500383377,
+                    "height": 0.779579121619463
+                },
+                "confidence": 0.05110635235905647
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T6_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.43863635659217837,
+                    "center_y": 0.625131219625473,
+                    "width": 0.6357579112052918,
+                    "height": 0.7404496073722839
+                },
+                "confidence": 0.1362626850605011
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T6_line8.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.43709383010864256,
+                    "center_y": 0.6230033934116364,
+                    "width": 0.09981870651245117,
+                    "height": 0.13081640005111694
+                },
+                "confidence": 0.9261839389801025
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4170466125011444,
+                    "center_y": 0.644532784819603,
+                    "width": 0.6317526459693908,
+                    "height": 0.6995923817157745
+                },
+                "confidence": 0.2028753161430359
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.18814505785703659,
+                    "center_y": 0.3032240252941847,
+                    "width": 0.30133306086063383,
+                    "height": 0.3713235892355442
+                },
+                "confidence": 0.07571981847286224
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.36547538042068484,
+                    "center_y": 0.5486629754304886,
+                    "width": 0.2981839895248413,
+                    "height": 0.3562825620174408
+                },
+                "confidence": 0.05120771750807762
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T7_line6.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.744584608078003,
+                    "center_y": 0.9964013397693634,
+                    "width": 0.298477840423584,
+                    "height": 0.37822669744491577
+                },
+                "confidence": 0.3335210978984833
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T7_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.2773668825626373,
+                    "center_y": 0.411088690161705,
+                    "width": 0.34567774534225465,
+                    "height": 0.42174914479255676
+                },
+                "confidence": 0.874400794506073
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T8_line3.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.7912014484405517,
+                    "center_y": 1.049520343542099,
+                    "width": 0.208565616607666,
+                    "height": 0.2684033513069153
+                },
+                "confidence": 0.11500910669565201
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.7929604291915894,
+                    "center_y": 1.0551447570323944,
+                    "width": 0.3146700382232666,
+                    "height": 0.3818078637123108
+                },
+                "confidence": 0.0971401110291481
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.841273832321167,
+                    "center_y": 1.118575543165207,
+                    "width": 0.18911390304565429,
+                    "height": 0.2529216408729553
+                },
+                "confidence": 0.096365787088871
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T8_line4.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.6501217365264893,
+                    "center_y": 0.8758675456047058,
+                    "width": 0.42252473831176757,
+                    "height": 0.5138927698135376
+                },
+                "confidence": 0.10440268367528915
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.12289262637495994,
+                    "center_y": 0.2221822878345847,
+                    "width": 0.2043475940823555,
+                    "height": 0.2636531312018633
+                },
+                "confidence": 0.06438890844583511
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.22092070281505585,
+                    "center_y": 0.3524208813905716,
+                    "width": 0.3779401838779449,
+                    "height": 0.4532564580440521
+                },
+                "confidence": 0.051444705575704575
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T8_line6.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.4321529626846313,
+                    "center_y": 0.6015236377716064,
+                    "width": 0.370667028427124,
+                    "height": 0.4566282033920288
+                },
+                "confidence": 0.14965055882930756
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T8_line7.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.42714054584503175,
+                    "center_y": 0.5926375687122345,
+                    "width": 0.10496649742126465,
+                    "height": 0.1191057562828064
+                },
+                "confidence": 0.7648382186889648
+            }
+        ]
+    },
+    {
+        "frame_id": 999,
+        "filename": "T8_line9.png",
+        "objects": [
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.3772590339183807,
+                    "center_y": 0.5297458097338676,
+                    "width": 0.494313108921051,
+                    "height": 0.6156708151102066
+                },
+                "confidence": 0.21142661571502686
+            },
+            {
+                "class_id": 0,
+                "name": "person",
+                "relative_coordinates": {
+                    "center_x": 0.40939912796020506,
+                    "center_y": 0.5777230858802795,
+                    "width": 0.1613931655883789,
+                    "height": 0.22231125831604004
+                },
+                "confidence": 0.0669579803943634
+            }
+        ]
+    }
+]
