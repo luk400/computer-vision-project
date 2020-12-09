@@ -50,6 +50,12 @@ python coco_eval.py -p cv_project -c 1 -w ./logs/cv_project/<your-saved-weights>
 ```
 
 
+### Record Results:
+
+500 epochs on not relabelled data (but augmented) [tensorboard](https://tensorboard.dev/experiment/7rzp1jdRQlamQVo5IK759g/#scalars).
+
+500 epochs on relabelled and augmented data [tensorboard]().
+
 ### Files description:
 
 ```
@@ -57,7 +63,7 @@ python coco_eval.py -p cv_project -c 1 -w ./logs/cv_project/<your-saved-weights>
 ├── assets
 ├── custom_effientdet_train.py
 ├── cv_eval.py
-├── data -> ../data
+├── data 
 ├── debug_data.py
 ├── download_pretrained_weights.sh
 ├── drone_dataset.py
