@@ -1,15 +1,16 @@
 import os
 
 import cv2
+import moviepy.video.io.ImageSequenceClip
 import numpy as np
 import torch
 from torch.backends import cudnn
-from utils.utils import get_index_label, plot_one_box, aspectaware_resize_padding
 
-from utils.utils import preprocess, invert_affine, postprocess, STANDARD_COLORS, standard_to_bgr, get_index_label, \
-    plot_one_box
 from backbone import EfficientDetBackbone
 from efficientdet.utils import BBoxTransform, ClipBoxes
+from utils.utils import aspectaware_resize_padding
+from utils.utils import invert_affine, postprocess, STANDARD_COLORS, standard_to_bgr, get_index_label, \
+    plot_one_box
 
 
 def preprocess(image_path, max_size=512, mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)):
@@ -29,6 +30,8 @@ project_folder_path = "./Yet-Another-EfficientDet-Pytorch/datasets/cv_project/va
 
 img_path = [os.path.join(project_folder_path, i) for i in os.listdir(project_folder_path)]
 
+# img_path = img_path[:50]
+
 print("# images for inference:", len(img_path))
 
 # replace this part with your project's anchor config
@@ -47,8 +50,7 @@ obj_list = ['person']
 
 model = EfficientDetBackbone(compound_coef=compound_coef, num_classes=len(obj_list),
                              ratios=anchor_ratios, scales=anchor_scales)
-pretrained_weights = "./Yet-Another-EfficientDet-Pytorch/logs/cv_project/efficientdet-d0_101_10000.pth"
-# model.load_state_dict(torch.load(f'weights/efficientdet-d{compound_coef}.pth', map_location='cpu'))
+pretrained_weights = "./logs/cv_project/efficientdet-d0_236_22500.pth"
 model.load_state_dict(torch.load(pretrained_weights, map_location='cpu'))
 model.requires_grad_(False)
 model.eval()
@@ -83,11 +85,12 @@ with torch.no_grad():
                       threshold, iou_threshold)
 
 
-def display(preds, imgs, imshow=True, imwrite=False):
+def display(preds, imgs, imshow=True, imwrite=False, debug=False):
     for i in range(len(imgs)):
         if len(preds[i]['rois']) == 0:
-            cv2.imshow('img', imgs[i])
-            cv2.waitKey(0)
+            if debug:
+                cv2.imshow('img', imgs[i])
+                cv2.waitKey(0)
             continue
 
         imgs[i] = imgs[i].copy()
@@ -104,8 +107,15 @@ def display(preds, imgs, imshow=True, imwrite=False):
             cv2.waitKey(0)
 
         if imwrite:
-            cv2.imwrite(f'test/img_inferred_d{compound_coef}_this_repo_{i}.jpg', imgs[i])
+            os.system("mkdir -p ./predictions")
+            cv2.imwrite(f'./predictions/img_inferred_d{compound_coef}_this_repo_{i}.jpg', imgs[i])
+
+    if imwrite:
+        image_folder = './predictions'
+        image_files = [image_folder + '/' + img for img in os.listdir(image_folder) if img.endswith(".jpg")]
+        clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(image_files, fps=1)
+        clip.write_videofile('./assets/predictions_testset.mp4')
 
 
 out = invert_affine(framed_metas, out)
-display(out, ori_imgs, imshow=True, imwrite=False)
+display(out, ori_imgs, imshow=False, imwrite=True)
