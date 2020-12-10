@@ -26,6 +26,7 @@ for i = 1:length(trainingsites)
     site = trainingsites{i};
     site_imgs = dir(fullfile(img_folder, site, '/*.png'));
     site_imgs = {site_imgs.name};
+    site_imgs
     site_imgs = natsortfiles(site_imgs);
     num_imgs(trainingsites{i}) = length(site_imgs);
     for j = 1:length(site_imgs)
@@ -46,7 +47,8 @@ for i = 1:length(trainingsites)
         % remove rows with only zeros
         bb = bb(any(bb ~= 0,2),:);
         % add to table
-        json_path = fullfile(modified_base_folder, site, '/Labels/', sprintf('Label%d.json', j));
+        label_id = regexp(site_imgs{j},'line([0-9]+)\.png','tokens');
+        json_path = fullfile(modified_base_folder, site, '/Labels/', sprintf('Label%s.json', label_id{1}{1}));
         training_img = [training_img; {img_path, bb, json_path}];
     end
 end
