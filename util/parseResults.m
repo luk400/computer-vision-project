@@ -21,7 +21,7 @@ for i = 1:length( results )
     site = name(1:strfind(name, '_line')-1);
     linenumber = str2double( name(strfind(name, '_line')+strlength('_line'):end) );
         
-    json = readJSON( fullfile( '../data', site, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
+    json = readJSON( fullfile( './data', site, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
     labels = json.Labels; clear json;
     if ~isempty(labels) && ~isempty({labels.poly})
         [~, yoloBBs, ~] = saveLabels( {labels.poly}, imgsize, [] );
