@@ -31,7 +31,7 @@ for i_site = 1:length(allsites)
     fprintf("\nSite %s\n", site);
 
     datapath = fullfile( './data/', site ); 
-    datapath_labels = datapath
+    datapath_labels = datapath;
     
     % if modified labels were created, use those for preprocessing
     if exist(modified_base_folder, 'dir')
