@@ -8,7 +8,7 @@ allsites = cat(2, trainingsites, testsites );
 
 % folders for efficientdet:
 edet_base_folder = './Yet-Another-EfficientDet-Pytorch/datasets/cv_project/';
-val_img_folder = './val/';
+val_img_folder = './eval/';
 train_img_folder = './train/';
 annotations_folder = './annotations/';
 
@@ -227,7 +227,7 @@ fid = fopen(fullfile(edet_base_folder, annotations_folder, 'instances_train.json
 fwrite(fid, training_json_str, 'char');
 fclose(fid);
 
-fid = fopen(fullfile(edet_base_folder, annotations_folder, 'instances_val.json'), 'w+');
+fid = fopen(fullfile(edet_base_folder, annotations_folder, 'instances_eval.json'), 'w+');
 fwrite(fid, test_json_str, 'char');
 fclose(fid);
 
