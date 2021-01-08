@@ -4,9 +4,6 @@ function out = augmentation_function(data, varargin)
     boxes = round(data{2});
     labels = data{3};
     
-    % Apply random color jitter. only for rgb
-    %I = jitterColorHSV(I,"Brightness",0.3,"Contrast",0.4,"Saturation",0.2);
-    
     % Define random affine transform.
     tform = randomAffine2d(varargin{:});
     rout = affineOutputView(size(I),tform);
