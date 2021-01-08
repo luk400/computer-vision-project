@@ -1,11 +1,11 @@
-%# %%
-addpath 'util'
+addpath 'util';
 img_folder = './results/';
 trainingsites = { 'F0', 'F1', 'F2', 'F3', 'F5', 'F6', 'F8', 'F9', 'F10', 'F11'}; 
+
 testsites = { 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8'};
 allsites = cat(2, trainingsites, testsites );
 
-modified_base_folder = './modified_labels/'
+modified_base_folder = './modified_labels/';
 if ~exist(modified_base_folder, 'dir')
     sprintf('Copying labels from ./data to %s', modified_base_folder)
     for i=1:size(allsites,2)
@@ -54,5 +54,3 @@ for i = 1:length(trainingsites)
 end
 
 relabeling_func(training_img);
-
-%# %%
