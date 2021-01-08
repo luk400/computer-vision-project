@@ -1,4 +1,6 @@
 *.swp
-data/
 results/
-
+__pycache__/
+data/
+my-uncommited-scripts
+.gitignore
