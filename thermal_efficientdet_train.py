@@ -10,7 +10,7 @@ import traceback
 import numpy as np
 import torch
 import yaml
-from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import transforms
@@ -22,6 +22,7 @@ from efficientdet.dataset import Resizer, Normalizer, Augmenter, collater
 from efficientdet.loss import FocalLoss
 from utils.sync_batchnorm import patch_replication_callback
 from utils.utils import replace_w_sync_bn, CustomDataParallel, get_last_weights, init_weights, boolean_string
+from visualize_test import coefficient_from_weights_filepath
 
 
 class Params:
@@ -35,7 +36,6 @@ class Params:
 def get_args():
     parser = argparse.ArgumentParser('Yet Another EfficientDet Pytorch: SOTA object detection network - Zylo117')
     parser.add_argument('-p', '--project', type=str, default='cv_project', help='project file that contains parameters')
-    parser.add_argument('-c', '--compound_coef', type=int, default=0, help='coefficients of efficientdet')
     parser.add_argument('-n', '--num-workers', type=int, default=os.cpu_count() - 1, help='num_workers of dataloader')
     parser.add_argument('--batch_size', type=int, default=8, help='The number of images per batch among all devices')
     parser.add_argument('--head_only', type=boolean_string, default=False,
@@ -54,9 +54,8 @@ def get_args():
                         help='Early stopping\'s parameter: number of epochs with no improvement after which training will be stopped. Set to 0 to disable this technique.')
     parser.add_argument('--data_path', type=str, default='Yet-Another-EfficientDet-Pytorch/datasets/',
                         help='the root folder of dataset')
-    parser.add_argument('--log_path', type=str, default='./Yet-Another-EfficientDet-Pytorch/logs/')
-    parser.add_argument('-w', '--load_weights', type=str,
-                        default="./Yet-Another-EfficientDet-Pytorch/weights/efficientdet-d0.pth",
+    parser.add_argument('--log_path', type=str, default='./logs/')
+    parser.add_argument('-w', '--load_weights', type=str, default="",
                         help='the wieghts are under Yet-Another-EfficientDet-Pytorch/weights\n Run download_pretrained_weights.sh')
     parser.add_argument('--saved_path', type=str, default='./Yet-Another-EfficientDet-Pytorch/logs/cv_project')
     parser.add_argument('--debug', type=boolean_string, default=False,
@@ -114,22 +113,23 @@ def train(opt):
                   'num_workers': opt.num_workers}
 
     input_sizes = [512, 640, 768, 896, 1024, 1280, 1280, 1536, 1536]
-    training_set = ThermalDataset(root_dir=os.path.join(opt.data_path, params.project_name), set=params.train_set,
-                                  transform=transforms.Compose([Normalizer(mean=params.mean, std=params.std),
-                                                                Augmenter(),
-                                                                Resizer(input_sizes[opt.compound_coef])]))
+    # training_set = ThermalDataset(root_dir=os.path.join(opt.data_path, params.project_name), set=params.train_set,
+    #                               transform=transforms.Compose([Normalizer(mean=params.mean, std=params.std),
+    #                                                             Augmenter(),
+    #                                                             Resizer(input_sizes[opt.compound_coef])]))
+    #
+    # train_size = int(0.7 * len(training_set))
+    # test_size = len(training_set) - train_size
+    # print(f"Train size split: {train_size}\n, Test size split: {test_size}")
+    #
+    # train_dataset, val_dataset = torch.utils.data.random_split(training_set, [train_size, test_size])
+    #
+    # training_generator = DataLoader(train_dataset, **training_params)
+    #
+    # val_generator = DataLoader(val_dataset, **val_params)
 
-    train_size = int(0.7 * len(training_set))
-    test_size = len(training_set) - train_size
-    print(f"Train size split: {train_size}\n, Test size split: {test_size}")
-
-    train_dataset, val_dataset = torch.utils.data.random_split(training_set, [train_size, test_size])
-
-    training_generator = DataLoader(train_dataset, **training_params)
-
-    val_generator = DataLoader(val_dataset, **val_params)
-
-    model = EfficientDetBackbone(num_classes=len(params.obj_list), compound_coef=opt.compound_coef,
+    compound_coefficient, _ = coefficient_from_weights_filepath(opt.load_weights)
+    model = EfficientDetBackbone(num_classes=len(params.obj_list), compound_coef=compound_coefficient,
                                  ratios=eval(params.anchors_ratios), scales=eval(params.anchors_scales))
 
     # load last weights
