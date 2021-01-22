@@ -1,9 +1,11 @@
 ### This project is about ...
 
-### The EfficientDet model [code](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch), [paper](https://arxiv.org/abs/1911.09070v7).
+our project for our Computer Vision course, in which we preprocess images taken by a drone in a staged search & rescue scenario, and apply EfficientDet to detect people who are (partially) obscured by trees.
+
+### The EfficientDet model ([code](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch), [paper](https://arxiv.org/abs/1911.09070v7))
 
 ```
-# this will clone EfficientDet too
+# clone this repository and also EfficientDet
 git clone --recursive  https://github.com/luk400/computer-vision-project.git
 
 # download pretrained weights into Yet-Another-EfficientDet-Pytorch/weights
@@ -12,9 +14,9 @@ python download_pretrained_weights.py
 ```
 
 ### Data 
-**1.** Download the original data - it has to be in a folder data/ in this repo
-* [data_SAR.zip(JKUDrive)](https://drive.jku.at/filr/public-link/file-download/ff8080827595a35701759e6ca83d481f/22192/-5528057403698270347/data_SAR.zip)
-* [data_SAR.zip(WeTransfer)](https://wetransfer.com/downloads/cecc0a101b4dab1827aa7bedd3f640c820201106160324/e48651)
+**1.** Download the original data with the single images and labels - it has to be placed in the base-folder of this repo and must be named "data" 
+* [data_SAR.zip(JKUDrive)](https://drive.jku.at/filr/public-link/file-download/ff8080827595a35701759e6ca83d481f/22192/-5528057403698270347/data_SAR.zip) (Unavailable)
+* [data_SAR.zip(WeTransfer)](https://wetransfer.com/downloads/cecc0a101b4dab1827aa7bedd3f640c820201106160324/e48651) (Unavailable)
     
 **2.** Create all the data necessary (images and json) + augmentation for training
 ```
@@ -22,9 +24,8 @@ python download_pretrained_weights.py
 run matlab preprocess_data.m
 ```
 
-**3.** To start training, after installing the necessary dependencies, you will also need to create the yaml file needed for training inside the projects folder (Yet-Another-EfficientDet-Pytorch/projects/cv_project.yml) and edit it appropriately, in particular, for train.py to run, you will need to include: 
+**3.** To start training, after installing the necessary dependencies, you will also need to create the yaml file needed for training (for an example which is used for the coco-dataset see [here](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch/blob/master/projects/coco.yml)) inside the projects folder (Yet-Another-EfficientDet-Pytorch/projects/cv_project.yml) and edit it appropriately, in particular, for train.py to run, you will need to include: 
 
-for a sample check this one [here](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch/blob/master/projects/coco.yml)
 ```
 touch Yet-Another-EfficientDet-Pytorch/projects/cv_project.yml
 
@@ -45,7 +46,7 @@ python thermal_efficientdet_train.py --project cv_project --compound_coeff 0 --b
 ```
 python generate_evaluation_json.py --weights PATH_TO_CHECKPOINT
 
-# this outputs the mAP for the jaon generated above
+# this outputs the mAP for the json generated above
 run matlab evaluate.m to 
 ```
 
@@ -54,7 +55,7 @@ run matlab evaluate.m to
 python visualize_test.py --weights ./Yet-Another-EfficientDet-Pytorch/logs/cv_project/weights-training-c2/efficientdet-d2_116_29500.pth 
 ```
 
-### Record Results:
+### Best Results:
 
 500 epochs on not relabelled data (but augmented) [tensorboard](https://tensorboard.dev/experiment/7rzp1jdRQlamQVo5IK759g/#scalars).
 
