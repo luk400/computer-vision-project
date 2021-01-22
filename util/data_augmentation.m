@@ -1,4 +1,6 @@
 function training_struct = data_augmentation(training_struct)
+    % This function takes care of the data-augmentation of the training images
+
     img_folder = './results/';
 
     % Get a list of all folders in this img_folder.
@@ -11,7 +13,7 @@ function training_struct = data_augmentation(training_struct)
         end
     end
 
-    %% Create dataset with training images
+    % Create dataset with training images
     training_img = cell2table(cell(0,2), "VariableNames", ["path","AABB"]);
     for i = 1:length(trainingsites)
         site = trainingsites{i};
@@ -39,34 +41,20 @@ function training_struct = data_augmentation(training_struct)
         end
     end
 
-    %% store image data in datastore 
+    % store image data in datastore 
     imds = imageDatastore(table2cell(training_img(:,1)));
     blds = boxLabelDatastore(training_img(:,2));
     trainingData = combine(imds,blds);
     
-    %% create folder to save augmented images
-    save_folder = fullfile(img_folder, "augmented_images"); 
-    if ~isdir(save_folder)
-        mkdir(save_folder);
-    end
-    
-
     %% -----------------------------------------------------------
     % This is the relevant part for defining augmentation operations
     %
-    % Define different augmentation operations 
     % data augmentation is done with the function randomAffine2D() inside
     % of augmentation_function()
     % default arguments for randomAffine2D():
     % ["XReflection",false, "YReflection",false, "Rotation",[0 0], 
     % "Scale",[1 1], "XShear",[0 0], "YShear",[0 0], 
     % "XTranslation",[0 0], "YTranslation",[0 0]]
-    %
-    % notes on some of the arguments:
-    % - XShear and YShear values must be between -90 and 90
-    % - XTranslation and YTranslation is given in number of pixels
-    % - Scale is probably not useful for our task, since our images always 
-    %   have the same resolution anyways
     
     % define anonymous function g which creates another anonymous function, 
     % which chooses a value in the given in the given interval according to 
@@ -96,7 +84,7 @@ function training_struct = data_augmentation(training_struct)
 
     augmentations = [xyrefl; xrefl; yrefl; norefl]
 
-    %% get data to augment 
+    % get data to augment 
     edet_base_folder = './Yet-Another-EfficientDet-Pytorch/datasets/cv_project/';
     train_img_folder = './train/';
     annotations_folder = './annotations/';
@@ -105,8 +93,8 @@ function training_struct = data_augmentation(training_struct)
     img_id = training_struct.images(end).id;
     ann_id = training_struct.annotations(end).id;
 
-    %% loop over the different data augmentations the specified number of times and save
-    %% resulting images and their bb
+    % loop over the different data augmentations the specified number of times and save
+    % resulting images and their bb
     num_per_refl = 5
     fprintf('After the following loop you will have %d new images',...
         size(augmentations,1)*size(training_img,1)*num_per_refl)
@@ -124,8 +112,6 @@ function training_struct = data_augmentation(training_struct)
             % save augmented images and their bb 
             for j = 1:num_imgs
                 img = augmented_data{j,1};
-                imwrite(img, fullfile(save_folder, sprintf('img_%d.png', ...
-                    (i-1)*num_imgs+j)));
                 imwrite(img, fullfile(edet_base_folder, train_img_folder, sprintf('img_%d.png', img_id)));
                 training_struct.images = [training_struct.images, struct('id', img_id, ...
                     'file_name', sprintf('img_%d.png', img_id), ...
@@ -133,10 +119,6 @@ function training_struct = data_augmentation(training_struct)
                     'coco_url', '', 'flickr_url', '')]; 
         
                 if size(augmented_data{j,2}, 1) > 0
-                    % save for acf trainer
-                    writematrix(augmented_data{j,2}, fullfile(save_folder, ...
-                        sprintf('img_%d.csv', (i-1)*num_imgs+j)));
-        
                     % append to training data for efficientdet
                     x_left = augmented_data{j,2}(:,1) - 1;
                     y_bottom = augmented_data{j,2}(:,2) - 1;
@@ -153,11 +135,6 @@ function training_struct = data_augmentation(training_struct)
                             y_bottom(i_bb), x_right(i_bb), y_top(i_bb), x_left(i_bb), y_top(i_bb)]}})];
                         ann_id = ann_id + 1;
                     end
-                else
-                    % save for acf trainer
-                    writematrix([0 0 0 0], fullfile(save_folder, ...
-                        sprintf('img_%d.csv', (i-1)*num_imgs+j)));
-        
                 end
                 img_id = img_id + 1;
             end
