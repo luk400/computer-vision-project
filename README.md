@@ -77,12 +77,12 @@ Last training on D1 and D2:{
 
 ### TODO:
 
-- [ ] **improve data augmentation**
+- [x] **improve data augmentation**
 - [ ] git repo refactoring
 - [X] do training for the others D*
 - [X] make a matlab evaluation script for python results json comparison
 - [X] modify bad labels using relabel_data.m
 - [x] remove images with none labels from dataloaders (e.g. instances_train.json)
 - [x] relabeling feature
-- [ ] ~~improve image integration~~
-- [ ] ~~fix data augmentation~~
+- [x] improve image integration
+- [x] fix data augmentation
