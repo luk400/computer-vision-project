@@ -22,11 +22,11 @@ function agl = getAGL( sitename )
         agl = 40;
     elseif( strcmpi( sitename, 'T2' ) )
         agl = 32;
-    elseif( strcmpi( sitename, 'T3' ) ) % chosen better value not the best one
+    elseif( strcmpi( sitename, 'T3' ) )
         agl = 33;
     elseif( strcmpi( sitename, 'T4' ) )
-        agl = 35;
-    elseif( strcmpi( sitename, 'T6' ) ) % chosen better value not the best one
+        agl = 33;
+    elseif( strcmpi( sitename, 'T6' ) )
         agl = 32;
     elseif( strcmpi( sitename, 'F8' ) )
         agl = 24;
