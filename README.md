@@ -72,7 +72,7 @@ Last training on D1 and D2:{
 | :-------------: | :----------: |:-----------: |
 | D0 | [efficientdet-d0_236_22500.pth](https://drive.google.com/file/d/1L6B7UIoqTOTTR6PVB56hEsqncJ_ds6Sx/view?usp=sharing) | 0.70 
 | D1 | [efficientdet-d1_102_19500.pth](https://drive.google.com/file/d/17qVN4W4jZiDhPoOtdDODGNSuDIcR8MmU/view?usp=sharing) | 0.87 
-| D2 | [efficientdet-d2_116_29500.pth](https://drive.google.com/file/d/1_dyAQgBbaPbkR6AJgiFbl6j-vYKnTevB/view?usp=sharing) | 0.87 
+| D2 | [efficientdet-d2_116_29500.pth](https://drive.google.com/file/d/1_dyAQgBbaPbkR6AJgiFbl6j-vYKnTevB/view?usp=sharing) | 0.88
 
 
 ### TODO:
