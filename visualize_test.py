@@ -100,8 +100,7 @@ def eval(pretrained_weights: Path, inputs_splitted_into_lists: list, compound_co
     anchor_ratios = [(1.0, 1.0), (1.4, 0.7), (0.7, 1.4)]
     anchor_scales = [2 ** 0, 2 ** (1.0 / 3.0), 2 ** (2.0 / 3.0)]
 
-    model = EfficientDetBackbone(compound_coef=compound_coef, num_classes=1, ratios=anchor_ratios,
-                                 scales=anchor_scales)
+    model = EfficientDetBackbone(compound_coef=compound_coef, num_classes=1, ratios=anchor_ratios, scales=anchor_scales)
     model.load_state_dict(torch.load(pretrained_weights, map_location='cpu'))
     model.requires_grad_(False)
     model.eval()
@@ -145,9 +144,9 @@ if __name__ == "__main__":
     ap.add_argument('--nms_threshold', type=float, default=0.2, help='nms threshold, change for testing purposes only')
     ap.add_argument('--cuda', default=True)
     ap.add_argument('--float16', default=False)
-    ap.add_argument('--imshow', type=bool, default=True)
-    ap.add_argument('--imwrite', type=bool, default=False)
-    ap.add_argument('--debug', type=bool, default=False)
+    ap.add_argument('--imshow', action="store_true")
+    ap.add_argument('--imwrite',action="store_true")
+    ap.add_argument('--debug', action="store_true")
 
     args = ap.parse_args()
 
@@ -168,7 +167,6 @@ if __name__ == "__main__":
     compound_coefficient, _ = coefficient_from_weights_filepath(weights)
     ori_imgs, framed_imgs, framed_metas = read_images(imgs_filepath, compound_coefficient)
     splitted_testset = prepare_inputs_for_model(use_cuda)
-
     predictions = eval(weights, splitted_testset, compound_coefficient, use_cuda)
 
     predictions_postrocessed = invert_affine(framed_metas, predictions)
