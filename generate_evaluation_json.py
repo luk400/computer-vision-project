@@ -121,7 +121,8 @@ if __name__ == '__main__':
     coco_gt = COCO(VAL_GT)
     image_ids = coco_gt.getImgIds()[:MAX_IMAGES]
 
-    json_results_filepath = f'assets/eval-jsons/coeffcient_{weights_identifier}_bbox_results.json'
+    os.system("mkdir -p ./assets/eval-jsons/")
+    json_results_filepath = f'./assets/eval-jsons/coefficient_{weights_identifier}_bbox_results.json'
 
     if override_prev_results or not os.path.exists(json_results_filepath):
         model = EfficientDetBackbone(compound_coef=compound_coef,
