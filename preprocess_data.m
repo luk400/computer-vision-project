@@ -19,11 +19,13 @@ mkdir(fullfile(edet_base_folder,annotations_folder));
 % read in json files and convert it to structs
 [training_struct, test_struct] = initialize_json();
 
+% id's for efficientdet json file
 training_ann_id = 0;
 training_img_id = 0;
 test_ann_id = 0;
 test_img_id = 0;
 
+% folder where modified labels created with 'relabel_data.m' are saved, if labels are modified
 modified_base_folder = './modified_labels/'
 for i_site = 1:length(allsites)
     for z_offset = [-4, -2, 0, 2, 4]
@@ -32,7 +34,7 @@ for i_site = 1:length(allsites)
         datapath = fullfile( './data/', site ); 
         datapath_labels = datapath;
         
-        % if modified labels were created, use those for preprocessing
+        % if modified labels were created, use those for preprocessing instead of original labels
         if exist(modified_base_folder, 'dir')
             datapath_labels = fullfile('./modified_labels/', site);
         end
@@ -41,12 +43,14 @@ for i_site = 1:length(allsites)
            error( 'folder %s does not exist. Did you download additional data?', datapath );
         end
 
-        if contains(site, "T") && z_offset~=0 % don't augment test images
+        % don't augment z-parameter for test images
+        if contains(site, "T") && z_offset~=0 
             continue
         end
 
         fprintf("\nSite: %s, z-offset: %d\n", site, z_offset);
        
+        % create folder in which to save images and bb for current z-parameter-offset
         if contains(site, "F")
             resultsfolder = fullfile( './results/', sprintf("%s_offset%d", site, z_offset));
         else
@@ -54,8 +58,11 @@ for i_site = 1:length(allsites)
         end
         mkdir(resultsfolder);
         
+        %%%%%%%%
+        % image integration
+        %%%%%%%%
+
         thermalParams = load( './data/camParams_thermal.mat' );
-        
         % Note: line numbers might not be consecutive and they don't start at index
         % 1. So we loop over the posibilities:
         for linenumber = 1:99
@@ -66,12 +73,6 @@ for i_site = 1:length(allsites)
             json = readJSON( fullfile( datapath, '/Poses/', [num2str(linenumber) '.json'] ) );
             images = json.images; clear json;
             
-            %% only use a few of the images
-            %num_img = 11
-            %center_idx = round(length(images)/2);
-            %images = images((center_idx-floor(num_img/2)):(center_idx+floor(num_img/2)));
-            %%%%%%%%
-        
             try
                json = readJSON( fullfile( datapath_labels, '/Labels/', ['Label' num2str(linenumber) '.json'] ) );
                labels = json.Labels; clear json;
@@ -94,7 +95,6 @@ for i_site = 1:length(allsites)
         
             end
         
-            %%
             refId = (round(length(images)/2))+1; % compute center by taking the average id!
             imgr = undistortImage( imread(fullfile(thermalpath,images(refId).imagefile)), ...
                    thermalParams.cameraParams );
@@ -107,9 +107,9 @@ for i_site = 1:length(allsites)
         
             for i_label = 1:length(images)
                 original = imread(fullfile(thermalpath,images(i_label).imagefile));
+                % uncomment the following lines to perform contrast enhancement on single images before image integration
                 %original_uint8 = uint8(255*mat2gray(original)); % convert to uint8 for adapthisteq to work
                 %original_CLAHE = adapthisteq(original_uint8, 'NumTiles', [8,8], 'ClipLimit', 0.01, 'NBins', 256, 'Range', 'full', 'Distribution', 'uniform');
-                %%original_CLAHE = adapthisteq(original_uint8, 'NumTiles', [8,8], 'ClipLimit', 0.04, 'NBins', 16, 'Range', 'full', 'Distribution', 'rayleigh', 'Alpha', 0.5);
                 %original = im2uint16(original_CLAHE); % convert back to uint16
                 img2 = undistortImage( original, ...
                        thermalParams.cameraParams );
@@ -175,23 +175,23 @@ for i_site = 1:length(allsites)
     
             % store AABBs
             if ~isempty(labels) && ~isempty({labels.poly})
-    
-                % make sure bounding boxes don't consist of just zeros
+                % read bb
                 bbs = saveLabels( {labels.poly}, size(integral), [] );
-                %bbs(~any(bbs,2),:)=[];
-                bbs(all(bbs<=1,2),:)=[]; % if all coordinates of a bb are smaller or equ. to 1, remove it
+                % make sure bounding boxes don't consist of just zeros
+                % if all coordinates of a bb are smaller (or equ. to) 1, remove it
+                bbs(all(bbs<=1,2),:)=[]; 
     
+                % check if bb-matrix is still non-empty
                 if size(bbs,1) > 0
-                    % save bounding box parameters as as required for acf trainer ([x y width height])
+                    % define bounding box matrices according to matlab indexing
                     x_left = bbs(:,1);
                     x_right = bbs(:,2);
                     y_bottom = bbs(:,3);
                     y_top = bbs(:,4);
                     bb_matrix = [x_left, y_bottom, x_right - x_left, y_top - y_bottom];
     
-    
-                    % save bounding box parameters as required for efficientdet 
-                    % subtract 1 for compatibility with python indexing
+                    % define bounding box parameters according to python indexing as required for efficientdet 
+                    % (i.e. subtract 1 for compatibility with python indexing)
                     x_left = round(x_left - 1);
                     x_right = round(x_right - 1);
                     y_bottom = round(y_bottom - 1);
@@ -199,9 +199,13 @@ for i_site = 1:length(allsites)
                     width = x_right - x_left;
                     height = y_top - y_bottom;
     
+                    % save each bounding box as csv file in results folder as well as in
+                    % struct which will later be saved as .json for efficientdet
                     for i_bb = 1:size(x_left, 1)
+                        % check if current image/bb belongs to training or test site
                         if site(1) == 'F'
                             writematrix(bb_matrix, fullfile(resultsfolder, sprintf('%s_line%d_offset%d.csv', site, linenumber, z_offset)));
+                            % add entry in struct with necessary fields for efficientdet
                             training_struct.annotations = [training_struct.annotations, struct(...
                                 'id', training_ann_id, 'image_id', training_img_id, 'category_id', 1, ...
                                 'iscrowd', 0, 'area', height(i_bb)*width(i_bb), ...
@@ -222,14 +226,14 @@ for i_site = 1:length(allsites)
                             warning('site not recognized')
                         end
                     end
-                else
+                else % if bb matrix was empty after removing 0-size bb, simply save a zero-vector in csv-file
                     if site(1) == 'F'
                         writematrix([0 0 0 0], fullfile(resultsfolder, sprintf('%s_line%d_offset%d.csv', site, linenumber, z_offset)));
                     else
                         writematrix([0 0 0 0], fullfile(resultsfolder, sprintf( '%s_line%d.csv', site, linenumber)));
                     end
                 end
-            else
+            else % if already 'labels' or '{labels.poly}' was empty, also save 0-vector
                 if site(1) == 'F'
                     writematrix([0 0 0 0], fullfile(resultsfolder, sprintf('%s_line%d_offset%d.csv', site, linenumber, z_offset)));
                 else
