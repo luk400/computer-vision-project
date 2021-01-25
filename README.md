@@ -13,8 +13,7 @@ python download_pretrained_weights.py
 
 ### Data 
 **1.** Download the original data - it has to be in a folder data/ in this repo
-* [data_SAR.zip(JKUDrive)](https://drive.jku.at/filr/public-link/file-download/ff8080827595a35701759e6ca83d481f/22192/-5528057403698270347/data_SAR.zip)
-* [data_SAR.zip(WeTransfer)](https://wetransfer.com/downloads/cecc0a101b4dab1827aa7bedd3f640c820201106160324/e48651)
+* [data_SAR.zip(JKUDrive)]( https://drive.jku.at/filr/public-link/file-download/ff8080827595a3570175b7cd458f44a8/22433/-3426038204355214966/data_SAR.zip)
     
 **2.** Create all the data necessary (images and json) + augmentation for training
 ```
