@@ -1,6 +1,6 @@
 ### This project is about ...
 
-our project for our Computer Vision course, in which we preprocess images taken by a drone in a staged search & rescue scenario, and apply EfficientDet to detect people who are (partially) obscured by trees.
+This is our project for our Computer Vision course, in which we preprocess images taken by a drone in a staged search & rescue scenario, and apply EfficientDet to detect people who are (partially) obscured by trees.
 
 ### The EfficientDet model ([code](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch), [paper](https://arxiv.org/abs/1911.09070v7))
 
